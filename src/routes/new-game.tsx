@@ -68,6 +68,39 @@ function NewGame() {
           </Panel>
         </div>
 
+        <Panel title="Dataset & Play Mode" className="mt-6">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Dataset</div>
+              <div className="space-y-1.5">
+                {(["demo_placeholder","community_imported","personal_manual","hybrid"] as const).map((m) => (
+                  <label key={m} className="flex items-center gap-2 text-sm cursor-pointer">
+                    <input type="radio" checked={community.datasetMode === m} onChange={() => setDatasetMode(m)} />
+                    {({demo_placeholder:"Demo Placeholder",community_imported:"Community Imported",personal_manual:"Personal Manual",hybrid:"Hybrid"})[m]}
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Play Mode</div>
+              <div className="space-y-1.5">
+                <label className="flex items-center gap-2 text-sm cursor-pointer">
+                  <input type="radio" checked={community.playMode === "strict"} onChange={() => setPlayMode("strict")} />
+                  Strict Automation
+                </label>
+                <label className="flex items-center gap-2 text-sm cursor-pointer">
+                  <input type="radio" checked={community.playMode === "assisted"} onChange={() => setPlayMode("assisted")} />
+                  Assisted Manual
+                </label>
+              </div>
+              <div className="text-xs text-muted-foreground mt-2">
+                Approval status: {automationOk ? "automation-ready" : textOk ? "text-approved only" : "incomplete"}.
+                {" "}<Link to="/community" className="text-gold hover:underline">Open Community Importer →</Link>
+              </div>
+            </div>
+          </div>
+        </Panel>
+
         <Panel title="Data Readiness" className="mt-6">
           <ul className="space-y-2">
             {checks.map((c, i) => (
@@ -80,15 +113,29 @@ function NewGame() {
           {allDemo && (
             <div className="mt-4 rounded border border-gold-muted/40 bg-accent/30 p-3 text-sm">
               <span className="text-gold">Demo data selected.</span> You can play the vertical slice, but
-              this is not official Mage Knight content. Import real data via the Import Center.
+              this is not official Mage Knight content. Import real data via the Community Importer.
+            </div>
+          )}
+          {communityUnreviewed && (
+            <div className="mt-3 rounded border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">
+              ⚠ Community Imported dataset contains unreviewed drafts. Review them before strict play.
+            </div>
+          )}
+          {blockStrict && (
+            <div className="mt-3 rounded border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">
+              Strict Automation Mode requires every expected component count to be met with
+              automation-approved drafts. Switch to Assisted Manual or finish approvals.
             </div>
           )}
         </Panel>
 
         <div className="mt-8 flex gap-3">
-          <Button onClick={start} disabled={!scenario || !hero} className="bg-gold-gradient text-primary-foreground hover:opacity-90">
+          <Button onClick={start} disabled={!scenario || !hero || blockStrict} className="bg-gold-gradient text-primary-foreground hover:opacity-90">
             Begin Scenario
           </Button>
+          {community.playMode === "assisted" && !textOk && (
+            <span className="text-xs text-muted-foreground self-center">Sandbox mode — incomplete dataset, manual resolution expected.</span>
+          )}
         </div>
       </div>
     </AppShell>
