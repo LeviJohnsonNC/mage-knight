@@ -1,9 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/mk/AppShell";
 import { useGame } from "@/lib/mk/store";
 import { Button } from "@/components/ui/button";
 import { useRef, useState } from "react";
-import { Upload, FileText, Trash2, FileJson, FileSpreadsheet, PencilLine } from "lucide-react";
+import { Upload, FileText, Trash2, FileJson, FileSpreadsheet, PencilLine, Globe } from "lucide-react";
 import { toast } from "sonner";
 import type { ImportedDocument } from "@/lib/mk/types";
 
