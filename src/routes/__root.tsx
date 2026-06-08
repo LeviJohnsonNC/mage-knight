@@ -81,8 +81,10 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <GameProvider>
-        <Outlet />
-        <Toaster theme="dark" />
+        <CommunityProvider>
+          <Outlet />
+          <Toaster theme="dark" />
+        </CommunityProvider>
       </GameProvider>
     </QueryClientProvider>
   );
