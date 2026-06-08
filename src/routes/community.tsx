@@ -509,9 +509,12 @@ function DraftReview({ draft, onChange, onDelete }: {
   onChange: (p: Partial<ImportedDraftRecord>) => void;
   onDelete: () => void;
 }) {
+  const { draftMeta, publishDraft, user } = useCommunity();
   const [name, setName] = useState(draft.name);
   const [fields, setFields] = useState<Record<string, any>>({ ...draft.fields });
   const [notes, setNotes] = useState(draft.reviewNotes ?? "");
+  const published = draftMeta[draft.id]?.published ?? false;
+  const canPublish = draft.textApproved && draft.automationApproved;
 
   function commit(p: Partial<ImportedDraftRecord> = {}) {
     onChange({ name, fields, reviewNotes: notes, ...p });
@@ -532,9 +535,12 @@ function DraftReview({ draft, onChange, onDelete }: {
             value={name} onChange={(e) => setName(e.target.value)} onBlur={() => commit()} />
           <div className="text-xs text-muted-foreground mt-1">
             {CATEGORY_LABELS[draft.category]} · {draft.kind} · retrieved {new Date(draft.retrievedAt).toLocaleString()}
+            {published
+              ? <span className="ml-2 text-mana-green">· Published to community</span>
+              : <span className="ml-2 text-muted-foreground">· Private draft</span>}
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap justify-end">
           {draft.textApproved
             ? <span className="text-xs text-mana-green flex items-center gap-1"><Check className="h-3 w-3" /> Text approved</span>
             : <Button size="sm" variant="secondary" onClick={() => commit({ textApproved: true, needsReview: false })}>Approve text</Button>}
@@ -544,6 +550,15 @@ function DraftReview({ draft, onChange, onDelete }: {
                 onClick={() => commit({ textApproved: true, automationApproved: true, needsReview: false })}>
                 Approve & automate
               </Button>}
+          {user && (
+            published
+              ? <Button size="sm" variant="outline" onClick={() => publishDraft(draft.id, false)}>Unpublish</Button>
+              : <Button size="sm" variant="outline" disabled={!canPublish}
+                  title={canPublish ? "Make this available to everyone" : "Approve text and automation first"}
+                  onClick={() => publishDraft(draft.id, true)}>
+                  Publish to community
+                </Button>
+          )}
           <Button size="sm" variant="ghost" onClick={onDelete}><X className="h-4 w-4" /></Button>
         </div>
       </div>
