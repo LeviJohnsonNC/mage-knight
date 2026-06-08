@@ -63,11 +63,19 @@ function ImportCenter() {
   return (
     <AppShell>
       <div className="max-w-6xl">
-        <h1 className="font-display text-4xl text-gold">Import Center</h1>
-        <p className="text-muted-foreground mt-2 max-w-2xl">
-          Upload rulebooks, FAQs, walkthroughs, card texts, CSV/JSON exports, or enter component data
-          manually. The Import Center is the only place to bring real Mage Knight content into this app.
-        </p>
+        <div className="flex items-start justify-between gap-6">
+          <div>
+            <h1 className="font-display text-4xl text-gold">Import Center</h1>
+            <p className="text-muted-foreground mt-2 max-w-2xl">
+              Upload rulebooks, FAQs, walkthroughs, card texts, CSV/JSON exports, or enter component data
+              manually. For Fandom wiki / BGG community sources, use the dedicated Community Importer.
+            </p>
+          </div>
+          <Link to="/community" className="panel-steel rounded-lg px-4 py-3 hover:border-gold border border-transparent transition">
+            <div className="flex items-center gap-2 font-display text-gold"><Globe className="h-4 w-4" /> Community Source Importer</div>
+            <div className="text-xs text-muted-foreground mt-1 max-w-[240px]">Ingest Fandom + BGG with review & attribution →</div>
+          </Link>
+        </div>
 
         <div className="mt-6 flex gap-2 border-b border-border">
           {(["docs","extract","parse","manual","rules","validate"] as const).map((t) => (
