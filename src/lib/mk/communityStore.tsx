@@ -126,5 +126,3 @@ export function downloadJson(filename: string, data: unknown) {
   URL.revokeObjectURL(url);
 }
 
-// no-op export to keep useCallback import-warning free if tree-shaken
-export const _useCallbackImport = useCallback;
