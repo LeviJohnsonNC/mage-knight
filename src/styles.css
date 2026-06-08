@@ -131,3 +131,272 @@
   .scrollbar-thin::-webkit-scrollbar-thumb { background: oklch(0.35 0.02 250); border-radius: 4px; }
   .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
 }
+
+/* ============ Homepage & rail (cinematic) ============ */
+
+.mk-eyebrow {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--gold-muted);
+}
+
+.mk-title-glow {
+  text-shadow:
+    0 0 1px oklch(0.78 0.14 80 / 50%),
+    0 2px 0 oklch(0 0 0 / 60%),
+    0 8px 28px oklch(0.55 0.10 75 / 35%),
+    0 0 60px oklch(0.45 0.20 285 / 25%);
+  background: linear-gradient(180deg, oklch(0.92 0.13 88) 0%, oklch(0.68 0.13 75) 55%, oklch(0.45 0.08 70) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mk-engraved-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: oklch(0.78 0.08 78);
+  padding: 7px 14px;
+  background:
+    linear-gradient(180deg, oklch(0.20 0.02 250) 0%, oklch(0.13 0.02 250) 100%);
+  border: 1px solid oklch(0.55 0.09 75 / 45%);
+  box-shadow:
+    inset 0 1px 0 oklch(0.78 0.14 80 / 25%),
+    inset 0 -1px 0 oklch(0 0 0 / 50%),
+    0 2px 6px -2px oklch(0 0 0 / 60%);
+  border-radius: 2px;
+  position: relative;
+}
+.mk-engraved-badge::before,
+.mk-engraved-badge::after {
+  content: "";
+  width: 4px; height: 4px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  box-shadow: 0 0 4px var(--gold);
+  margin: 0 8px;
+  opacity: 0.7;
+}
+
+/* ===== Adventure cards ===== */
+.mk-adventure-card {
+  --card-bg-1: oklch(0.18 0.025 250 / 92%);
+  --card-bg-2: oklch(0.11 0.02 250 / 92%);
+  position: relative;
+  display: block;
+  min-height: 152px;
+  padding: 22px 22px 18px;
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, var(--card-bg-1) 0%, var(--card-bg-2) 100%);
+  border: 1px solid oklch(0.55 0.09 75 / 28%);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 5%),
+    inset 0 0 40px oklch(0 0 0 / 40%),
+    0 10px 30px -10px oklch(0 0 0 / 70%);
+  transition: transform 220ms cubic-bezier(.2,.7,.2,1), box-shadow 220ms, border-color 220ms;
+  overflow: hidden;
+  isolation: isolate;
+}
+.mk-adventure-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: radial-gradient(oklch(0.55 0.09 75 / 6%) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+.mk-adventure-card > * { position: relative; z-index: 1; }
+
+.mk-adventure-card:hover {
+  transform: translateY(-3px);
+  border-color: oklch(0.72 0.13 78 / 60%);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 8%),
+    inset 0 0 40px oklch(0 0 0 / 35%),
+    0 18px 40px -12px oklch(0 0 0 / 75%),
+    0 0 24px -4px oklch(0.72 0.13 78 / 35%);
+}
+.mk-adventure-card:active { transform: translateY(-1px); }
+
+.mk-adventure-card--primary {
+  border-color: oklch(0.72 0.13 78 / 55%);
+  box-shadow:
+    inset 0 1px 0 oklch(0.78 0.14 80 / 25%),
+    inset 0 0 50px oklch(0.45 0.15 285 / 14%),
+    0 14px 36px -10px oklch(0 0 0 / 70%),
+    0 0 28px -6px oklch(0.72 0.13 78 / 30%);
+}
+.mk-adventure-card--primary::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at top right, oklch(0.45 0.18 285 / 18%) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.mk-adventure-card--disabled {
+  opacity: 0.55;
+  filter: saturate(0.4);
+  cursor: not-allowed;
+}
+.mk-adventure-card--disabled:hover { transform: none; box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 5%), inset 0 0 40px oklch(0 0 0 / 40%), 0 10px 30px -10px oklch(0 0 0 / 70%); }
+
+.mk-motif-slot {
+  width: 74px; height: 74px;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 50% 35%, oklch(0.26 0.04 260) 0%, oklch(0.10 0.02 250) 70%);
+  border: 1px solid oklch(0.55 0.09 75 / 35%);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 8%),
+    inset 0 -2px 6px oklch(0 0 0 / 60%),
+    0 4px 12px -4px oklch(0 0 0 / 60%);
+  transition: filter 240ms, box-shadow 240ms;
+}
+.mk-adventure-card:hover .mk-motif-slot {
+  filter: brightness(1.12) saturate(1.1);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 10%),
+    inset 0 -2px 6px oklch(0 0 0 / 60%),
+    0 0 18px -2px oklch(0.72 0.13 78 / 50%);
+}
+
+.mk-status-label {
+  font-family: var(--font-display);
+  font-size: 9.5px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: oklch(0.62 0.04 78);
+  padding: 4px 8px;
+  border: 1px solid oklch(0.55 0.09 75 / 28%);
+  border-radius: 1px;
+  white-space: nowrap;
+  background: oklch(0.08 0.02 250 / 60%);
+}
+.mk-status-primary {
+  color: oklch(0.92 0.13 88);
+  border-color: oklch(0.72 0.13 78 / 70%);
+  box-shadow: 0 0 12px -2px oklch(0.72 0.13 78 / 50%);
+}
+
+/* corner trim */
+.mk-corner {
+  position: absolute;
+  width: 14px; height: 14px;
+  border: 1px solid oklch(0.72 0.13 78 / 65%);
+  pointer-events: none;
+  opacity: 0.85;
+}
+.mk-corner--tl { top: 6px; left: 6px; border-right: 0; border-bottom: 0; }
+.mk-corner--tr { top: 6px; right: 6px; border-left: 0; border-bottom: 0; }
+.mk-corner--bl { bottom: 6px; left: 6px; border-right: 0; border-top: 0; }
+.mk-corner--br { bottom: 6px; right: 6px; border-left: 0; border-top: 0; }
+
+/* ===== Drifting motes ===== */
+@keyframes mk-mote {
+  0%   { transform: translate3d(0,0,0) scale(0.7); opacity: 0; }
+  20%  { opacity: 0.7; }
+  100% { transform: translate3d(40px, -120px, 0) scale(1); opacity: 0; }
+}
+.mk-mote {
+  position: absolute;
+  width: 3px; height: 3px;
+  background: oklch(0.85 0.12 80);
+  border-radius: 50%;
+  box-shadow: 0 0 6px oklch(0.85 0.12 80 / 80%), 0 0 16px oklch(0.55 0.10 75 / 50%);
+  animation: mk-mote linear infinite;
+  opacity: 0;
+}
+
+/* ===== Left rail ===== */
+.mk-rail {
+  background:
+    linear-gradient(180deg, oklch(0.16 0.02 250) 0%, oklch(0.09 0.02 250) 100%);
+  border-right: 1px solid oklch(0.55 0.09 75 / 22%);
+  box-shadow:
+    inset -1px 0 0 oklch(0 0 0 / 50%),
+    inset 1px 0 0 oklch(1 0 0 / 4%),
+    4px 0 18px -8px oklch(0 0 0 / 60%);
+}
+.mk-rail::before {
+  /* engraved center seam */
+  content: "";
+  position: absolute;
+  top: 12%; bottom: 12%;
+  left: 50%; width: 1px;
+  background: linear-gradient(180deg, transparent, oklch(0.55 0.09 75 / 18%), transparent);
+  pointer-events: none;
+}
+.mk-rail-divider {
+  width: 36px; height: 1px;
+  background: linear-gradient(90deg, transparent, oklch(0.55 0.09 75 / 50%), transparent);
+  margin: 2px 0 6px;
+}
+.mk-crest-slot {
+  display: grid; place-items: center;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(0.18 0.04 260) 0%, oklch(0.08 0.02 250) 75%);
+  border: 1px solid oklch(0.55 0.09 75 / 40%);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 8%),
+    inset 0 -2px 4px oklch(0 0 0 / 60%),
+    0 0 12px -2px oklch(0.45 0.18 285 / 35%);
+}
+.mk-rail-slot {
+  position: relative;
+  display: grid; place-items: center;
+  width: 44px; height: 44px;
+  border-radius: 6px;
+  color: oklch(0.62 0.03 80);
+  background: linear-gradient(180deg, oklch(0.16 0.02 250) 0%, oklch(0.10 0.02 250) 100%);
+  border: 1px solid oklch(0.30 0.02 250 / 60%);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 4%), inset 0 -1px 0 oklch(0 0 0 / 40%);
+  transition: color 180ms, border-color 180ms, box-shadow 180ms;
+}
+.mk-rail-slot:hover {
+  color: oklch(0.92 0.06 80);
+  border-color: oklch(0.55 0.09 75 / 50%);
+  box-shadow: inset 0 1px 0 oklch(0.78 0.14 80 / 18%), 0 0 10px -2px oklch(0.72 0.13 78 / 35%);
+}
+.mk-rail-slot--active {
+  color: var(--gold);
+  border-color: oklch(0.72 0.13 78 / 70%);
+  background: linear-gradient(180deg, oklch(0.22 0.04 260) 0%, oklch(0.12 0.02 250) 100%);
+  box-shadow:
+    inset 0 1px 0 oklch(0.78 0.14 80 / 30%),
+    0 0 16px -3px oklch(0.72 0.13 78 / 50%);
+}
+.mk-rail-tooltip {
+  position: absolute;
+  left: calc(100% + 10px);
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: oklch(0.85 0.06 80);
+  background: linear-gradient(180deg, oklch(0.16 0.02 250) 0%, oklch(0.10 0.02 250) 100%);
+  border: 1px solid oklch(0.55 0.09 75 / 35%);
+  padding: 6px 10px;
+  border-radius: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-4px);
+  transition: opacity 160ms, transform 160ms;
+  box-shadow: 0 4px 12px -2px oklch(0 0 0 / 60%);
+  z-index: 50;
+}
+.mk-rail-slot:hover .mk-rail-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
