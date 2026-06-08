@@ -14,6 +14,7 @@ export const Route = createFileRoute("/new-game")({
 
 function NewGame() {
   const { library, dispatch } = useGame();
+  const { state: community, setDatasetMode, setPlayMode } = useCommunity();
   const nav = useNavigate();
   const scenarios = Object.values(library.scenarios).filter((s) => s.soloCompatible);
   const heroes = Object.values(library.heroes);
@@ -22,15 +23,24 @@ function NewGame() {
 
   const scenario = library.scenarios[scenarioId];
   const hero = library.heroes[heroId];
+  const automationChecklist = useMemo(() => buildChecklist(community.drafts, community.expectedCounts, true), [community.drafts, community.expectedCounts]);
+  const textChecklist = useMemo(() => buildChecklist(community.drafts, community.expectedCounts, false), [community.drafts, community.expectedCounts]);
+  const automationOk = automationChecklist.every((r) => r.ok);
+  const textOk = textChecklist.every((r) => r.ok);
+
   const checks = [
     { ok: !!scenario, label: "Scenario data present" },
     { ok: !!hero, label: "Hero data present" },
     { ok: hero ? hero.startingDeck.length > 0 : false, label: "Hero starting deck defined" },
     { ok: Object.keys(library.tiles).length > 0, label: "At least one map tile" },
+    { ok: community.playMode === "assisted" || automationOk, label: "Required components automation-approved (strict mode)" },
   ];
   const allDemo = scenario?.source === "demo" || hero?.source === "demo";
+  const communityUnreviewed = community.datasetMode === "community_imported" && community.drafts.some((d) => !d.textApproved);
+  const blockStrict = community.playMode === "strict" && !automationOk;
 
   function start() {
+    if (blockStrict) return;
     dispatch({ type: "START_GAME", scenarioId, heroId, timestamp: Date.now() });
     nav({ to: "/game" });
   }
