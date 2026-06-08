@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/mk/AppShell";
 import { useGame } from "@/lib/mk/store";
 import { useState } from "react";
