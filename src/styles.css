@@ -250,7 +250,7 @@
     inset 0 1px 0 oklch(1 0 0 / 5%), inset 0 0 40px oklch(0 0 0 / 40%), 0 10px 30px -10px oklch(0 0 0 / 70%); }
 
 .mk-motif-slot {
-  width: 86px; height: 86px;
+  width: 74px; height: 74px;
   display: grid; place-items: center;
   background:
     radial-gradient(circle at 50% 35%, oklch(0.26 0.04 260) 0%, oklch(0.10 0.02 250) 70%);

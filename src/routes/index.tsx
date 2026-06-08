@@ -201,17 +201,17 @@ function HomeActionCard({
   const inner: ReactNode = (
     <>
       <CornerTrim />
-      <div className="relative flex gap-5 items-start">
+      <div className="relative flex gap-4 items-center">
         <div className="mk-motif-slot shrink-0">
-          <img src={icon} alt="" className="h-[68px] w-[68px] object-contain" />
+          <img src={icon} alt="" className="h-[58px] w-[58px] object-contain" />
         </div>
-        <div className="min-w-0 flex-1 pt-1">
-          <div className="flex items-baseline justify-between gap-3">
-            <h3 className="font-display text-[1.35rem] tracking-wide text-gold">{title}</h3>
-            <span className={`mk-status-label ${primary ? "mk-status-primary" : ""}`}>{status}</span>
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-foreground/70">{description}</p>
+        <div className="min-w-0 flex-1">
+          <h3 className="font-display text-[1.2rem] leading-tight tracking-wide text-gold truncate">{title}</h3>
+          <p className="mt-1.5 text-[13px] leading-snug text-foreground/70 line-clamp-2">{description}</p>
         </div>
+      </div>
+      <div className="relative mt-3 flex justify-end">
+        <span className={`mk-status-label ${primary ? "mk-status-primary" : ""}`}>{status}</span>
       </div>
     </>
   );
