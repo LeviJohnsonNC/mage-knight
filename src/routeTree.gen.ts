@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ValidationRouteImport } from './routes/validation'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SavesRouteImport } from './routes/saves'
+import { Route as RulesRouteImport } from './routes/rules'
+import { Route as NewGameRouteImport } from './routes/new-game'
+import { Route as LibraryRouteImport } from './routes/library'
+import { Route as ImportRouteImport } from './routes/import'
+import { Route as GameRouteImport } from './routes/game'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ValidationRoute = ValidationRouteImport.update({
+  id: '/validation',
+  path: '/validation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavesRoute = SavesRouteImport.update({
+  id: '/saves',
+  path: '/saves',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RulesRoute = RulesRouteImport.update({
+  id: '/rules',
+  path: '/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewGameRoute = NewGameRouteImport.update({
+  id: '/new-game',
+  path: '/new-game',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportRoute = ImportRouteImport.update({
+  id: '/import',
+  path: '/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GameRoute = GameRouteImport.update({
+  id: '/game',
+  path: '/game',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/game': typeof GameRoute
+  '/import': typeof ImportRoute
+  '/library': typeof LibraryRoute
+  '/new-game': typeof NewGameRoute
+  '/rules': typeof RulesRoute
+  '/saves': typeof SavesRoute
+  '/settings': typeof SettingsRoute
+  '/validation': typeof ValidationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/game': typeof GameRoute
+  '/import': typeof ImportRoute
+  '/library': typeof LibraryRoute
+  '/new-game': typeof NewGameRoute
+  '/rules': typeof RulesRoute
+  '/saves': typeof SavesRoute
+  '/settings': typeof SettingsRoute
+  '/validation': typeof ValidationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/game': typeof GameRoute
+  '/import': typeof ImportRoute
+  '/library': typeof LibraryRoute
+  '/new-game': typeof NewGameRoute
+  '/rules': typeof RulesRoute
+  '/saves': typeof SavesRoute
+  '/settings': typeof SettingsRoute
+  '/validation': typeof ValidationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/game'
+    | '/import'
+    | '/library'
+    | '/new-game'
+    | '/rules'
+    | '/saves'
+    | '/settings'
+    | '/validation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/game'
+    | '/import'
+    | '/library'
+    | '/new-game'
+    | '/rules'
+    | '/saves'
+    | '/settings'
+    | '/validation'
+  id:
+    | '__root__'
+    | '/'
+    | '/game'
+    | '/import'
+    | '/library'
+    | '/new-game'
+    | '/rules'
+    | '/saves'
+    | '/settings'
+    | '/validation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GameRoute: typeof GameRoute
+  ImportRoute: typeof ImportRoute
+  LibraryRoute: typeof LibraryRoute
+  NewGameRoute: typeof NewGameRoute
+  RulesRoute: typeof RulesRoute
+  SavesRoute: typeof SavesRoute
+  SettingsRoute: typeof SettingsRoute
+  ValidationRoute: typeof ValidationRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/validation': {
+      id: '/validation'
+      path: '/validation'
+      fullPath: '/validation'
+      preLoaderRoute: typeof ValidationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saves': {
+      id: '/saves'
+      path: '/saves'
+      fullPath: '/saves'
+      preLoaderRoute: typeof SavesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rules': {
+      id: '/rules'
+      path: '/rules'
+      fullPath: '/rules'
+      preLoaderRoute: typeof RulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new-game': {
+      id: '/new-game'
+      path: '/new-game'
+      fullPath: '/new-game'
+      preLoaderRoute: typeof NewGameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/import': {
+      id: '/import'
+      path: '/import'
+      fullPath: '/import'
+      preLoaderRoute: typeof ImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/game': {
+      id: '/game'
+      path: '/game'
+      fullPath: '/game'
+      preLoaderRoute: typeof GameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +217,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GameRoute: GameRoute,
+  ImportRoute: ImportRoute,
+  LibraryRoute: LibraryRoute,
+  NewGameRoute: NewGameRoute,
+  RulesRoute: RulesRoute,
+  SavesRoute: SavesRoute,
+  SettingsRoute: SettingsRoute,
+  ValidationRoute: ValidationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
