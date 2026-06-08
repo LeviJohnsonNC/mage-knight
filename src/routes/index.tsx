@@ -206,7 +206,7 @@ function HomeActionCard({
           <img src={icon} alt="" className="h-[58px] w-[58px] object-contain" />
         </div>
         <div className="min-w-0 flex-1">
-          <h3 className="font-display text-[1.05rem] leading-tight text-gold">{title}</h3>
+          <h3 className="font-display text-[0.95rem] leading-[1.15] tracking-[0.02em] text-gold text-balance">{title}</h3>
           <p className="mt-1.5 text-[13px] leading-snug text-foreground/70 line-clamp-2">{description}</p>
         </div>
       </div>
