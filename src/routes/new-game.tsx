@@ -1,7 +1,9 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { AppShell } from "@/components/mk/AppShell";
 import { useGame } from "@/lib/mk/store";
-import { useState } from "react";
+import { useCommunity } from "@/lib/mk/communityStore";
+import { buildChecklist } from "@/lib/mk/community";
+import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, Check } from "lucide-react";
 
