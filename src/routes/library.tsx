@@ -21,8 +21,13 @@ function LibraryPage() {
   return (
     <AppShell>
       <div className="max-w-6xl">
-        <h1 className="font-display text-4xl text-gold">Component Library</h1>
-        <p className="text-muted-foreground mt-1">Everything the rules engine can use. Only demo placeholders are shown until you import real data.</p>
+        <div className="flex items-start justify-between">
+          <div>
+            <h1 className="font-display text-4xl text-gold">Component Library</h1>
+            <p className="text-muted-foreground mt-1">Everything the rules engine can use. Only demo placeholders are shown until you import real data.</p>
+          </div>
+          <Link to="/community" className="text-sm text-gold hover:underline self-start">Community Source Importer →</Link>
+        </div>
         <div className="mt-5 flex items-center gap-2 border-b border-border">
           {TABS.map((t) => (
             <button key={t} onClick={() => setTab(t)}
