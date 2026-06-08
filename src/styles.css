@@ -400,3 +400,22 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+/* Form input helper used by Community Importer */
+.input {
+  width: 100%;
+  background: oklch(0.12 0.02 250 / 70%);
+  border: 1px solid oklch(0.30 0.03 250);
+  color: inherit;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 120ms;
+}
+.input:focus {
+  border-color: oklch(0.72 0.13 78 / 70%);
+  box-shadow: 0 0 0 2px oklch(0.72 0.13 78 / 20%);
+}
+.input[type="checkbox"], .input[type="radio"] { width: auto; }
+textarea.input { font-family: inherit; line-height: 1.4; resize: vertical; }

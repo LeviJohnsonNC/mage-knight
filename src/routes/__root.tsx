@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { GameProvider } from "../lib/mk/store";
+import { CommunityProvider } from "../lib/mk/communityStore";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -80,8 +81,10 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <GameProvider>
-        <Outlet />
-        <Toaster theme="dark" />
+        <CommunityProvider>
+          <Outlet />
+          <Toaster theme="dark" />
+        </CommunityProvider>
       </GameProvider>
     </QueryClientProvider>
   );

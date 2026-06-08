@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Upload, BookOpen, Library, ShieldAlert, Save, Settings, Swords } from "lucide-react";
+import { Home, Upload, BookOpen, Library, ShieldAlert, Save, Settings, Swords, Globe } from "lucide-react";
 import type { ReactNode } from "react";
 import crest from "@/assets/home/crest.png.asset.json";
 
@@ -7,6 +7,7 @@ const NAV = [
   { to: "/", icon: Home, label: "Hall" },
   { to: "/new-game", icon: Swords, label: "New Game" },
   { to: "/import", icon: Upload, label: "Import" },
+  { to: "/community", icon: Globe, label: "Community" },
   { to: "/library", icon: Library, label: "Components" },
   { to: "/rules", icon: BookOpen, label: "Rules" },
   { to: "/validation", icon: ShieldAlert, label: "Validation" },
