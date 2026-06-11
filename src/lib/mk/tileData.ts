@@ -34,6 +34,12 @@ import coreB2 from "@/assets/tiles/core-b2.png.asset.json";
 import coreB3 from "@/assets/tiles/core-b3.png.asset.json";
 import coreB4 from "@/assets/tiles/core-b4.png.asset.json";
 import cityB5 from "@/assets/tiles/city-b5.png.asset.json";
+import cityBlue from "@/assets/tiles/city-blue.png.asset.json";
+import cityWhite from "@/assets/tiles/city-white.png.asset.json";
+import cityRed from "@/assets/tiles/city-red.png.asset.json";
+import coreB9 from "@/assets/tiles/core-b9.png.asset.json";
+import coreB10 from "@/assets/tiles/core-b10.png.asset.json";
+import tileVolkare from "@/assets/tiles/tile-volkare.png.asset.json";
 
 export type Terrain =
   | "plains"
@@ -60,6 +66,7 @@ export type Feature =
   | { kind: "spawning_grounds" }
   | { kind: "ruins" }
   | { kind: "city"; color: "red" | "green" | "blue" | "white" }
+  | { kind: "volkare_camp" }
   | { kind: "portal_orb" };
 
 export type HexPos = 0 | 1 | 2 | 3 | 4 | 5 | 6;
@@ -443,6 +450,108 @@ export const TILES: Record<string, TileDef> = {
       { pos: 6, terrain: "wasteland", feature: N },
     ],
   },
+
+  "city-blue": {
+    id: "city-blue",
+    label: "City 6 (Blue)",
+    kind: "city",
+    image: cityBlue.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "forest", feature: N },
+      { pos: 1, terrain: "plains", feature: { kind: "monastery" } },
+      { pos: 2, terrain: "mountain", feature: { kind: "monster_den" }, needsReview: true, note: "draconum art on mountain" },
+      { pos: 3, terrain: "plains", feature: { kind: "city", color: "blue" }, note: "blue city center" },
+      { pos: 4, terrain: "lake", feature: N },
+      { pos: 5, terrain: "hills", feature: N, note: "tile label 6" },
+      { pos: 6, terrain: "lake", feature: N },
+    ],
+  },
+
+  "city-white": {
+    id: "city-white",
+    label: "City 7 (White)",
+    kind: "city",
+    image: cityWhite.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "wasteland", feature: { kind: "monster_den" }, needsReview: true, note: "two cave mouths" },
+      { pos: 1, terrain: "plains", feature: N },
+      { pos: 2, terrain: "wasteland", feature: { kind: "keep" } },
+      { pos: 3, terrain: "plains", feature: { kind: "city", color: "white" }, note: "white city center" },
+      { pos: 4, terrain: "forest", feature: N },
+      { pos: 5, terrain: "lake", feature: N, note: "tile label 7" },
+      { pos: 6, terrain: "lake", feature: { kind: "monster_den" }, needsReview: true, note: "draconum on/near lake" },
+    ],
+  },
+
+  "city-red": {
+    id: "city-red",
+    label: "City 8 (Red)",
+    kind: "city",
+    image: cityRed.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "desert", feature: { kind: "spawning_grounds" } },
+      { pos: 1, terrain: "desert", feature: { kind: "mine", crystal: "red" }, needsReview: true, note: "cave + red crystal cluster" },
+      { pos: 2, terrain: "wasteland", feature: { kind: "monster_den" }, needsReview: true, note: "draconum art" },
+      { pos: 3, terrain: "desert", feature: { kind: "city", color: "red" }, note: "red city center" },
+      { pos: 4, terrain: "desert", feature: N },
+      { pos: 5, terrain: "wasteland", feature: N, note: "tile label 8" },
+      { pos: 6, terrain: "desert", feature: { kind: "monster_den" }, needsReview: true, note: "draconum art" },
+    ],
+  },
+
+  "core-b9": {
+    id: "core-b9",
+    label: "Core 9 (walled)",
+    kind: "core",
+    image: coreB9.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "wasteland", feature: { kind: "spawning_grounds" } },
+      { pos: 1, terrain: "plains", feature: { kind: "mage_tower" } },
+      { pos: 2, terrain: "wasteland", feature: N },
+      { pos: 3, terrain: "plains", feature: { kind: "monster_den" }, needsReview: true, note: "walled center hex with draconum — unusual; could be unique assault site" },
+      { pos: 4, terrain: "mountain", feature: N },
+      { pos: 5, terrain: "desert", feature: N, note: "tile label 9" },
+      { pos: 6, terrain: "desert", feature: { kind: "village" }, needsReview: true, note: "tents/bazaar — village or unique marketplace?" },
+    ],
+  },
+
+  "core-b10": {
+    id: "core-b10",
+    label: "Core 10 (mines)",
+    kind: "core",
+    image: coreB10.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "forest", feature: { kind: "dungeon" }, needsReview: true, note: "wooden pit with 4-color crystal cluster — dungeon or multi-mine" },
+      { pos: 1, terrain: "lake", feature: N },
+      { pos: 2, terrain: "forest", feature: { kind: "keep" } },
+      { pos: 3, terrain: "wasteland", feature: N },
+      { pos: 4, terrain: "forest", feature: { kind: "spawning_grounds" }, note: "numbered 2/4/6 ring" },
+      { pos: 5, terrain: "plains", feature: N, note: "tile label 10; printed marauder stripped" },
+      { pos: 6, terrain: "plains", feature: N, note: "printed marauder stripped" },
+    ],
+  },
+
+  "tile-volkare": {
+    id: "tile-volkare",
+    label: "Volkare's Camp",
+    kind: "city",
+    image: tileVolkare.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "forest", feature: N, note: "printed marauder stripped" },
+      { pos: 1, terrain: "mountain", feature: N },
+      { pos: 2, terrain: "lake", feature: N },
+      { pos: 3, terrain: "plains", feature: { kind: "volkare_camp" }, note: "Volkare's walled camp, center hex" },
+      { pos: 4, terrain: "wasteland", feature: { kind: "monster_den" }, needsReview: true, note: "draconum art" },
+      { pos: 5, terrain: "hills", feature: N, note: "tile label V" },
+      { pos: 6, terrain: "desert", feature: { kind: "village" }, needsReview: true, note: "smoking houses — burning village?" },
+    ],
+  },
 };
 
 export const TILE_ORDER = [
@@ -467,6 +576,12 @@ export const TILE_ORDER = [
   "core-b3",
   "core-b4",
   "city-b5",
+  "city-blue",
+  "city-white",
+  "city-red",
+  "core-b9",
+  "core-b10",
+  "tile-volkare",
 ] as const;
 
 export function getTile(id: string): TileDef | undefined {
