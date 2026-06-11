@@ -76,10 +76,10 @@ function reducer(state: { game: GameState; library: ComponentLibrary }, action: 
 }
 
 export function GameProvider({ children }: { children: ReactNode }) {
-  const [library, setLibraryState] = useState<ComponentLibrary>(() => loadLS(LS_LIB, demoLibrary));
+  const [library, setLibraryState] = useState<ComponentLibrary>(() => mergeOfficialTiles(loadLS(LS_LIB, demoLibrary)));
   const [{ game }, rdispatch] = useReducer(reducer, undefined, () => ({
     game: loadLS<GameState>(LS_GAME, newGameState()),
-    library: loadLS<ComponentLibrary>(LS_LIB, demoLibrary),
+    library: mergeOfficialTiles(loadLS<ComponentLibrary>(LS_LIB, demoLibrary)),
   }));
   const [docs, setDocsState] = useState<ImportedDocument[]>(() => loadLS(LS_DOCS, [] as ImportedDocument[]));
   const [saves, setSaves] = useState<SavedGame[]>(() => loadLS(LS_SAVES, [] as SavedGame[]));
