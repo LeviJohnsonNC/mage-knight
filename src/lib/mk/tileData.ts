@@ -198,6 +198,125 @@ export const TILES: Record<string, TileDef> = {
       { pos: 6, terrain: "hills", feature: { kind: "mine", crystal: "blue" } },
     ],
   },
+
+  "core-6": {
+    id: "core-6",
+    label: "Core 6",
+    kind: "core",
+    image: core6.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "mountain", feature: N },
+      { pos: 1, terrain: "forest", feature: N },
+      { pos: 2, terrain: "wasteland", feature: { kind: "dungeon" } },
+      { pos: 3, terrain: "wasteland", feature: { kind: "tomb" }, needsReview: true, note: "cave entrance with red crystal — tomb vs dungeon" },
+      { pos: 4, terrain: "plains", feature: N },
+      { pos: 5, terrain: "wasteland", feature: N, note: "tile label 6" },
+      { pos: 6, terrain: "forest", feature: N, note: "printed orcs token stripped" },
+    ],
+  },
+
+  "core-7": {
+    id: "core-7",
+    label: "Core 7",
+    kind: "core",
+    image: core7.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "lake", feature: N },
+      { pos: 1, terrain: "forest", feature: N, note: "printed orcs token stripped" },
+      { pos: 2, terrain: "plains", feature: { kind: "monastery" } },
+      { pos: 3, terrain: "swamp", feature: N },
+      { pos: 4, terrain: "forest", feature: { kind: "magical_glade" } },
+      { pos: 5, terrain: "plains", feature: N, note: "tile label 7" },
+      { pos: 6, terrain: "plains", feature: { kind: "ruins" }, needsReview: true, note: "white stone arrangement — ruins?" },
+    ],
+  },
+
+  "core-8": {
+    id: "core-8",
+    label: "Core 8",
+    kind: "core",
+    image: core8.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "forest", feature: { kind: "magical_glade" } },
+      { pos: 1, terrain: "forest", feature: { kind: "spawning_grounds" }, needsReview: true, note: "bone/stone circle — spawning grounds?" },
+      { pos: 2, terrain: "forest", feature: N },
+      { pos: 3, terrain: "swamp", feature: N, note: "printed orcs token stripped" },
+      { pos: 4, terrain: "plains", feature: N },
+      { pos: 5, terrain: "swamp", feature: N, note: "tile label 8" },
+      { pos: 6, terrain: "swamp", feature: { kind: "village" } },
+    ],
+  },
+
+  "core-9": {
+    id: "core-9",
+    label: "Core 9",
+    kind: "core",
+    image: core9.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "wasteland", feature: { kind: "ruins" }, note: "tile label 9 area" },
+      { pos: 1, terrain: "mountain", feature: N },
+      { pos: 2, terrain: "plains", feature: N },
+      { pos: 3, terrain: "mountain", feature: N },
+      { pos: 4, terrain: "wasteland", feature: { kind: "keep" } },
+      { pos: 5, terrain: "wasteland", feature: { kind: "mage_tower" } },
+      { pos: 6, terrain: "plains", feature: N },
+    ],
+  },
+
+  "core-10": {
+    id: "core-10",
+    label: "Core 10",
+    kind: "core",
+    image: core10.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "wasteland", feature: { kind: "dungeon" } },
+      { pos: 1, terrain: "forest", feature: N },
+      { pos: 2, terrain: "wasteland", feature: N },
+      { pos: 3, terrain: "mountain", feature: N },
+      { pos: 4, terrain: "plains", feature: N },
+      { pos: 5, terrain: "wasteland", feature: { kind: "keep" }, note: "tile label 10" },
+      { pos: 6, terrain: "wasteland", feature: { kind: "spawning_grounds" }, needsReview: true, note: "bone circle — spawning grounds?" },
+    ],
+  },
+
+  "core-11": {
+    id: "core-11",
+    label: "Core 11",
+    kind: "core",
+    image: core11.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "hills", feature: N },
+      { pos: 1, terrain: "lake", feature: N },
+      { pos: 2, terrain: "plains", feature: { kind: "spawning_grounds" }, needsReview: true, note: "bone circle — spawning grounds?" },
+      { pos: 3, terrain: "plains", feature: { kind: "mage_tower" } },
+      { pos: 4, terrain: "lake", feature: N },
+      { pos: 5, terrain: "lake", feature: N, note: "tile label 11" },
+      { pos: 6, terrain: "hills", feature: N, note: "printed orcs token stripped" },
+    ],
+  },
+
+  "city-12": {
+    id: "city-12",
+    label: "City 12",
+    kind: "city",
+    image: city12.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "mountain", feature: N },
+      { pos: 1, terrain: "wasteland", feature: N, needsReview: true, note: "cracked-stone terrain — wasteland?" },
+      { pos: 2, terrain: "plains", feature: { kind: "village" }, needsReview: true, note: "tents/camp — village or unique site?" },
+      { pos: 3, terrain: "plains", feature: N, note: "central hex; printed orcs+walls are art, not a site" },
+      { pos: 4, terrain: "plains", feature: { kind: "monastery" } },
+      { pos: 5, terrain: "plains", feature: { kind: "city", color: "blue" }, needsReview: true, note: "tile label 12; city fame numbers 6/4/2 visible — confirm color" },
+      { pos: 6, terrain: "mountain", feature: N },
+    ],
+  },
 };
 
 export const TILE_ORDER = [
@@ -208,6 +327,13 @@ export const TILE_ORDER = [
   "country-3",
   "country-4",
   "country-5",
+  "core-6",
+  "core-7",
+  "core-8",
+  "core-9",
+  "core-10",
+  "core-11",
+  "city-12",
 ] as const;
 
 export function getTile(id: string): TileDef | undefined {
