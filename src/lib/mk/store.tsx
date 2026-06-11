@@ -91,7 +91,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
 
   const ctx = useMemo<Ctx>(() => ({
     library,
-    setLibrary: (l) => setLibraryState(l),
+    setLibrary: (l) => setLibraryState(mergeOfficialTiles(l)),
     state: game,
     dispatch: (e) => rdispatch({ type: "dispatch", event: e }),
     doUndo: () => rdispatch({ type: "set", state: undo(game, library) }),
