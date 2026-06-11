@@ -66,6 +66,7 @@ export type Feature =
   | { kind: "spawning_grounds" }
   | { kind: "ruins" }
   | { kind: "city"; color: "red" | "green" | "blue" | "white" }
+  | { kind: "volkare_camp" }
   | { kind: "portal_orb" };
 
 export type HexPos = 0 | 1 | 2 | 3 | 4 | 5 | 6;
