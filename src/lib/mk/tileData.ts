@@ -27,6 +27,13 @@ import core9 from "@/assets/tiles/core-9.png.asset.json";
 import core10 from "@/assets/tiles/core-10.png.asset.json";
 import core11 from "@/assets/tiles/core-11.png.asset.json";
 import city12 from "@/assets/tiles/city-12.png.asset.json";
+import country13 from "@/assets/tiles/country-13.png.asset.json";
+import country14 from "@/assets/tiles/country-14.png.asset.json";
+import coreB1 from "@/assets/tiles/core-b1.png.asset.json";
+import coreB2 from "@/assets/tiles/core-b2.png.asset.json";
+import coreB3 from "@/assets/tiles/core-b3.png.asset.json";
+import coreB4 from "@/assets/tiles/core-b4.png.asset.json";
+import cityB5 from "@/assets/tiles/city-b5.png.asset.json";
 
 export type Terrain =
   | "plains"
@@ -317,6 +324,125 @@ export const TILES: Record<string, TileDef> = {
       { pos: 6, terrain: "mountain", feature: N },
     ],
   },
+
+  "country-13": {
+    id: "country-13",
+    label: "Countryside 13",
+    kind: "countryside",
+    image: country13.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "forest", feature: N },
+      { pos: 1, terrain: "plains", feature: N, note: "printed marauder enemy stripped" },
+      { pos: 2, terrain: "forest", feature: { kind: "magical_glade" }, needsReview: true, note: "purple-glow stone circle — magical glade vs spawning grounds" },
+      { pos: 3, terrain: "forest", feature: { kind: "mage_tower" } },
+      { pos: 4, terrain: "lake", feature: N },
+      { pos: 5, terrain: "plains", feature: N, note: "tile label 13" },
+      { pos: 6, terrain: "forest", feature: { kind: "monster_den" }, needsReview: true, note: "pit with blue/green crystals beside — monster den or mine?" },
+    ],
+  },
+
+  "country-14": {
+    id: "country-14",
+    label: "Countryside 14",
+    kind: "countryside",
+    image: country14.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "desert", feature: N, needsReview: true, note: "tan terrain — desert or plains?" },
+      { pos: 1, terrain: "plains", feature: { kind: "keep" } },
+      { pos: 2, terrain: "plains", feature: { kind: "mine", crystal: "red" }, needsReview: true, note: "wooden mine entrance with red+white crystals — mine or dungeon" },
+      { pos: 3, terrain: "plains", feature: N },
+      { pos: 4, terrain: "hills", feature: { kind: "spawning_grounds" }, note: "numbered orc spawn ring 2/4/6" },
+      { pos: 5, terrain: "plains", feature: N, note: "tile label 14" },
+      { pos: 6, terrain: "hills", feature: { kind: "village" } },
+    ],
+  },
+
+  "core-b1": {
+    id: "core-b1",
+    label: "Core 1",
+    kind: "core",
+    image: coreB1.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "mountain", feature: N },
+      { pos: 1, terrain: "desert", feature: { kind: "ruins" } },
+      { pos: 2, terrain: "hills", feature: { kind: "monster_den" } },
+      { pos: 3, terrain: "desert", feature: { kind: "monastery" } },
+      { pos: 4, terrain: "desert", feature: N },
+      { pos: 5, terrain: "hills", feature: N, note: "tile label 1" },
+      { pos: 6, terrain: "desert", feature: N },
+    ],
+  },
+
+  "core-b2": {
+    id: "core-b2",
+    label: "Core 2",
+    kind: "core",
+    image: coreB2.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "lake", feature: N },
+      { pos: 1, terrain: "swamp", feature: { kind: "spawning_grounds" } },
+      { pos: 2, terrain: "forest", feature: N },
+      { pos: 3, terrain: "lake", feature: N },
+      { pos: 4, terrain: "hills", feature: { kind: "mine", crystal: "green" }, needsReview: true, note: "cave with green crystal — mine or monster den" },
+      { pos: 5, terrain: "swamp", feature: { kind: "mage_tower" }, note: "tile label 2" },
+      { pos: 6, terrain: "swamp", feature: { kind: "monster_den" }, note: "draconum art — den/draconum spawn" },
+    ],
+  },
+
+  "core-b3": {
+    id: "core-b3",
+    label: "Core 3",
+    kind: "core",
+    image: coreB3.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "mountain", feature: N },
+      { pos: 1, terrain: "wasteland", feature: { kind: "spawning_grounds" } },
+      { pos: 2, terrain: "wasteland", feature: { kind: "ruins" } },
+      { pos: 3, terrain: "wasteland", feature: N },
+      { pos: 4, terrain: "wasteland", feature: { kind: "mage_tower" } },
+      { pos: 5, terrain: "wasteland", feature: { kind: "mine", crystal: "white" }, needsReview: true, note: "tile label 3; cave + white crystal — mine vs monster den" },
+      { pos: 6, terrain: "wasteland", feature: N },
+    ],
+  },
+
+  "core-b4": {
+    id: "core-b4",
+    label: "Core 4",
+    kind: "core",
+    image: coreB4.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "hills", feature: { kind: "mine", crystal: "blue" }, needsReview: true, note: "cave + blue crystal" },
+      { pos: 1, terrain: "hills", feature: N },
+      { pos: 2, terrain: "wasteland", feature: N },
+      { pos: 3, terrain: "mountain", feature: { kind: "monster_den" }, needsReview: true, note: "mountain with draconum art — center hex" },
+      { pos: 4, terrain: "wasteland", feature: { kind: "keep" } },
+      { pos: 5, terrain: "wasteland", feature: { kind: "spawning_grounds" }, note: "tile label 4" },
+      { pos: 6, terrain: "wasteland", feature: N },
+    ],
+  },
+
+  "city-b5": {
+    id: "city-b5",
+    label: "City 5 (Green)",
+    kind: "city",
+    image: cityB5.url,
+    source: "user-upload-official",
+    hexes: [
+      { pos: 0, terrain: "forest", feature: { kind: "magical_glade" } },
+      { pos: 1, terrain: "wasteland", feature: { kind: "spawning_grounds" }, needsReview: true, note: "bone arrangement" },
+      { pos: 2, terrain: "lake", feature: N },
+      { pos: 3, terrain: "forest", feature: { kind: "city", color: "green" }, note: "green city, center hex" },
+      { pos: 4, terrain: "wasteland", feature: { kind: "tomb" }, needsReview: true, note: "red-cloth shape — tomb?" },
+      { pos: 5, terrain: "forest", feature: { kind: "tomb" }, needsReview: true, note: "tile label 5; red-cloth shape — tomb?" },
+      { pos: 6, terrain: "wasteland", feature: N },
+    ],
+  },
 };
 
 export const TILE_ORDER = [
@@ -334,6 +460,13 @@ export const TILE_ORDER = [
   "core-10",
   "core-11",
   "city-12",
+  "country-13",
+  "country-14",
+  "core-b1",
+  "core-b2",
+  "core-b3",
+  "core-b4",
+  "city-b5",
 ] as const;
 
 export function getTile(id: string): TileDef | undefined {
