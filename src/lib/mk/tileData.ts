@@ -27,6 +27,13 @@ import core9 from "@/assets/tiles/core-9.png.asset.json";
 import core10 from "@/assets/tiles/core-10.png.asset.json";
 import core11 from "@/assets/tiles/core-11.png.asset.json";
 import city12 from "@/assets/tiles/city-12.png.asset.json";
+import country13 from "@/assets/tiles/country-13.png.asset.json";
+import country14 from "@/assets/tiles/country-14.png.asset.json";
+import coreB1 from "@/assets/tiles/core-b1.png.asset.json";
+import coreB2 from "@/assets/tiles/core-b2.png.asset.json";
+import coreB3 from "@/assets/tiles/core-b3.png.asset.json";
+import coreB4 from "@/assets/tiles/core-b4.png.asset.json";
+import cityB5 from "@/assets/tiles/city-b5.png.asset.json";
 
 export type Terrain =
   | "plains"
