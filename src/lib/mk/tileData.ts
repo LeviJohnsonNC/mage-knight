@@ -34,6 +34,12 @@ import coreB2 from "@/assets/tiles/core-b2.png.asset.json";
 import coreB3 from "@/assets/tiles/core-b3.png.asset.json";
 import coreB4 from "@/assets/tiles/core-b4.png.asset.json";
 import cityB5 from "@/assets/tiles/city-b5.png.asset.json";
+import cityBlue from "@/assets/tiles/city-blue.png.asset.json";
+import cityWhite from "@/assets/tiles/city-white.png.asset.json";
+import cityRed from "@/assets/tiles/city-red.png.asset.json";
+import coreB9 from "@/assets/tiles/core-b9.png.asset.json";
+import coreB10 from "@/assets/tiles/core-b10.png.asset.json";
+import tileVolkare from "@/assets/tiles/tile-volkare.png.asset.json";
 
 export type Terrain =
   | "plains"
